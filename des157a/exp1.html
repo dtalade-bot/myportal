@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <h1>Experiment 1</h1>
+
+     <input id="text" placeholder="Enter a string">
+  <select id="choice">
+    <option value="even">Even letters</option>
+    <option value="odd">Odd letters</option>
+  </select>
+  <button onclick="convert()">Convert</button>
+  <p id="result"></p>
+
+  <script>
+    function convert() {
+      const text = document.getElementById("text").value;
+      const choice = document.getElementById("choice").value;
+
+      const result = text.split(" ").map(word => {
+        let position = 0;
+
+        return [...word].map(char => {
+          if (!/[a-z]/i.test(char)) return char;
+
+          const shouldCapitalize =
+            choice === "even" ? position % 2 === 1 : position % 2 === 0;
+
+          position++;
+          return shouldCapitalize ? char.toUpperCase() : char;
+        }).join("");
+      }).join(" ");
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+
+</body>
+</html>
