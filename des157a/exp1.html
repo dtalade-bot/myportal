@@ -8,35 +8,56 @@
 <body>
     <h1>Experiment 1</h1>
 
-     <input id="text" placeholder="Enter a string">
-  <select id="choice">
-    <option value="even">Even letters</option>
-    <option value="odd">Odd letters</option>
+     
+  <select id="trait">
+    <option value="attack">Attack Power</option>
+    <option value="defense">Defense Power</option>
+    <option value="special">Special Power</option>
+
   </select>
-  <button onclick="convert()">Convert</button>
-  <p id="result"></p>
+  
 
   <script>
-    function convert() {
-      const text = document.getElementById("text").value;
-      const choice = document.getElementById("choice").value;
+    trait = firstOptionTrait;
 
-      const result = text.split(" ").map(word => {
-        let position = 0;
+if (secondOptionTrait < preferredOptionTrait)
+{
+trait = secondOptionTrait;
+}
 
-        return [...word].map(char => {
-          if (!/[a-z]/i.test(char)) return char;
+else 
+{
+preferredOptionTrait= firstOptionTrait;
+}
 
-          const shouldCapitalize =
-            choice === "even" ? position % 2 === 1 : position % 2 === 0;
+if (thirdOptionTrait< preferredOptionTrait)
+{
+preferredOptionTrait= thirdOptionTrait;
+}
 
-          position++;
-          return shouldCapitalize ? char.toUpperCase() : char;
-        }).join("");
-      }).join(" ");
+else
+{
+null;
+}
 
-      document.getElementById("result").textContent = result;
-    }
+
+
+trait = [defense, attack, special];
+
+preferredOptionTrait=defense;
+
+
+
+for (myTrait of trait){
+
+if (myTrait< preferredOptionTrait)
+{
+ preferredOptionTrait=myTrait;
+}
+else{
+preferredOptionTrait=defense;
+}
+}
   </script>
 
 </body>
